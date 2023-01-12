@@ -2,6 +2,6 @@
 {
     public class NumberResult : ResultRoot
     {
-        public int Result { get; set; }
+        public int? Result { get; set; }
     }
 }
