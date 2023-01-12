@@ -1,5 +1,14 @@
-﻿<html>
+﻿@model NumberPresenter.Web.Models.IndexModel
+
+<html>
 <body>
-<h2>Make this page please</h2>
+<form action="/" method="post">
+    <div class="user-input">
+        @Html.TextBoxFor(m => m.UserInput);
+    </div>
+    <div class="result">
+
+    </div>
+</form>
 </body>
 </html>
