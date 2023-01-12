@@ -15,11 +15,13 @@ namespace NumberPresenter.Web.Controllers
             _romanService = romanService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
+        [HttpPost]
         public IActionResult Index(IndexModel model)
         {
             var numberResult = _numberService.ExtractNumber(model.UserInput);
@@ -41,7 +43,10 @@ namespace NumberPresenter.Web.Controllers
             if (!romanResult.Success)
             {
                 model.ErrorMessage = romanResult.ErrorMessage;
+                return View(model);
             }
+
+            model.Result = romanResult.Result;
 
             return View(model);
         }

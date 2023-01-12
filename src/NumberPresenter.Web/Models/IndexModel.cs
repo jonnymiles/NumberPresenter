@@ -5,5 +5,7 @@
         public string UserInput { get; set; }
 
         public string ErrorMessage { get; set; }
+
+        public string Result { get; set; }
     }
 }
