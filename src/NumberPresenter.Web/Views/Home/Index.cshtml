@@ -1,13 +1,20 @@
 ﻿@model NumberPresenter.Web.Models.IndexModel
 
 <html>
+<head>
+    <link rel="stylesheet" href="~/css/app.css"/>
+</head>
 <body>
+<div class="welcome-row">
+    <h1>Welcome to the Roman Numerator</h1>
+    <p>Please type in a number in the box below and press the "Convert" button to get its Roman numeral.</p>
+</div>
 <form action="/" method="post">
     <div class="box-row">
-        <div class="box user-input">
-            @Html.TextBoxFor(m => m.UserInput);
+        <div class="box box--user-input">
+            @Html.TextAreaFor(m => m.UserInput, new { @class = "box--user-input__textbox"})
         </div>
-        <div class="box result">
+        <div class="box box--result">
             @Model?.Result
         </div>
     </div>
@@ -15,7 +22,7 @@
         <input type="submit" value="Convert"/>
     </div>
 </form>
-<div class="error-report">
+<div class="error-report-row">
     @Model?.ErrorMessage
 </div>
 </body>
