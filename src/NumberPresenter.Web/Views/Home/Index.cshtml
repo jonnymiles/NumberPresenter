@@ -5,25 +5,35 @@
     <link rel="stylesheet" href="~/css/app.css"/>
 </head>
 <body>
-<div class="welcome-row">
-    <h1>Welcome to the Roman Numerator</h1>
-    <p>Please type in a number in the box below and press the "Convert" button to get its Roman numeral.</p>
-</div>
-<form action="/" method="post">
-    <div class="box-row">
-        <div class="box box--user-input">
-            @Html.TextAreaFor(m => m.UserInput, new { @class = "box--user-input__textbox"})
-        </div>
-        <div class="box box--result">
-            @Model?.Result
-        </div>
+<div class="container">
+    <div class="row row--welcome">
+        <h1>Welcome to the Roman Numerator</h1>
+        <p>Please type in a number in the box below and press the "Convert" button to get its Roman numeral.</p>
     </div>
-    <div class="button-row">
-        <input type="submit" value="Convert"/>
+    <form action="/" method="post">
+        <div class="row row--box">
+            <div class="box box--user-input">
+                @Html.TextAreaFor(m => m.UserInput, new { @class = "box--user-input__textbox", placeholder = "Enter number here" })
+            </div>
+            <div class="convert-sign">&#10146;</div>
+            <div class="box box--result">
+                @if (Model?.Result is null)
+                {
+                    <span class="box--result__placeholder">(Result will appear here)</span>
+                }
+                @Model?.Result
+            </div>
+        </div>
+        <div class="row row--button">
+            <input class="submit-button" type="submit" value="Convert"/>
+        </div>
+    </form>
+    <div class="row row--error">
+        @if (!string.IsNullOrWhiteSpace(Model?.ErrorMessage))
+        {
+            @:Error: @Model.ErrorMessage
+        }
     </div>
-</form>
-<div class="error-report-row">
-    @Model?.ErrorMessage
 </div>
 </body>
 </html>
