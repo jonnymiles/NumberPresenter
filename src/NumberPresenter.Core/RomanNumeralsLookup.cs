@@ -5,7 +5,7 @@
     /// </summary>
     public static class RomanNumeralsLookup
     {
-        private static readonly IEnumerable<NumberNumeral> _keyNumerals = new List<NumberNumeral>
+        private static readonly IEnumerable<NumberNumeral> KeyNumerals = new List<NumberNumeral>
         {
             new(1, "I"),
             new(5, "V"),
@@ -16,7 +16,7 @@
             new(1000, "M"),
         };
 
-        private static IEnumerable<NumberNumeral> _subtractionCases = new List<NumberNumeral>
+        private static readonly IEnumerable<NumberNumeral> SubtractionCases = new List<NumberNumeral>
         {
             new(4, "IV"),
             new(9, "IX"),
@@ -33,9 +33,9 @@
         /// <returns>The first Roman numeral below the input number.</returns>
         public static NumberNumeral RoundDown(int input)
         {
-            if (_keyNumerals.Any(x => x.Number == input))
+            if (KeyNumerals.Any(x => x.Number == input))
             {
-                return _keyNumerals.First(x => x.Number == input);
+                return KeyNumerals.First(x => x.Number == input);
             }
 
             return FindNextDown(input);
@@ -60,7 +60,7 @@
         /// <returns>True if the number is a subtraction case, false if not.</returns>
         public static bool IsSubtractionCase(int input)
         {
-            return _subtractionCases.Any(x => x.Number == input);
+            return SubtractionCases.Any(x => x.Number == input);
         }
 
         /// <summary>
@@ -70,16 +70,16 @@
         /// <returns>Roman numeral information for the number.</returns>
         public static NumberNumeral GetSubtractionCase(int input)
         {
-            return _subtractionCases.First(x => x.Number == input);
+            return SubtractionCases.First(x => x.Number == input);
         }
 
         private static NumberNumeral FindNextDown(int input)
         {
-            foreach (var _keyNumeral in _keyNumerals.OrderByDescending(x => x.Number))
+            foreach (var keyNumeral in KeyNumerals.OrderByDescending(x => x.Number))
             {
-                if (_keyNumeral.Number < input)
+                if (keyNumeral.Number < input)
                 {
-                    return _keyNumeral;
+                    return keyNumeral;
                 }
             }
 
