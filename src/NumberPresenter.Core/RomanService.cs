@@ -17,18 +17,19 @@ namespace NumberPresenter.Core
 
             var frags = NumberFragmenter.GetBaseTens(numeric);
 
-            var numeralTrackers = frags.Select(x => new NumberNumeral { Number = x });
+            var numerals = new List<string>();
 
-            foreach (var numeralTracker in numeralTrackers)
+            foreach (var frag in frags)
             {
-                numeralTracker.Numeral = Romanise(numeralTracker.Number);
+                var numeral = Romanise(frag);
+                numerals.Add(numeral);
             }
 
             var finalRoman = new StringBuilder();
 
-            foreach (var numeralTracker in numeralTrackers)
+            foreach (var numeral in numerals)
             {
-                finalRoman.Append(numeralTracker.Numeral);
+                finalRoman.Append(numeral);
             }
 
             return new PresentResult
