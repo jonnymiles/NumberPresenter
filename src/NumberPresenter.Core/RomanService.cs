@@ -53,17 +53,12 @@ namespace NumberPresenter.Core
                 numerals.Add(numeral);
             }
 
-            var finalRoman = new StringBuilder();
-
-            foreach (var numeral in numerals)
-            {
-                finalRoman.Append(numeral);
-            }
+            var finalRoman = string.Join("", numerals);
 
             return new TextResult
             {
                 Success = true,
-                Result = finalRoman.ToString()
+                Result = finalRoman
             };
         }
 
