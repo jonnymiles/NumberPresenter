@@ -10,45 +10,23 @@ namespace NumberPresenter.Terminal
         {
             var dependencyContainer = new DependencyContainer();
 
-            var numberService = dependencyContainer.GetService<INumberService>();
             var romanService = dependencyContainer.GetService<IRomanService>();
 
             while (true)
             {
-                Run(numberService, romanService);
+                Run(romanService);
             }
         }
 
-        private static void Run(INumberService numberService, IRomanService romanService)
+        private static void Run(IRomanService romanService)
         {
             Console.WriteLine("Please enter the number (1-2000) that you would like to convert to Roman numerals:");
 
             var input = Console.ReadLine();
 
-            var numberResult = numberService.ExtractNumber(input);
+            var romanResult = romanService.NumericToRoman(input);
 
-            if (!numberResult.Success)
-            {
-                Exit($"Error: {numberResult.ErrorMessage}");
-                return;
-            }
-
-            if (!numberResult.Result.HasValue)
-            {
-                Exit("Unknown error");
-                return;
-            }
-
-            var romanResult = romanService.NumericToRoman(numberResult.Result.Value);
-
-            if (!romanResult.Success)
-            {
-                Exit($"Error: {romanResult.ErrorMessage}");
-            }
-            else
-            {
-                Exit($"Result: {romanResult.Result}");
-            }
+            Exit(romanResult.Success ? $"Result: {romanResult.Result}" : $"Error: {romanResult.ErrorMessage}");
         }
 
         private static void Exit(string message = "")

@@ -4,6 +4,31 @@ namespace NumberPresenter.Core
 {
     public class RomanService : IRomanService
     {
+        public PresentResult NumericToRoman(string numeric)
+        {
+            var numberResult = NumberExtractor.ExtractNumber(numeric);
+
+            if (!numberResult.Success)
+            {
+                return new PresentResult
+                {
+                    ErrorMessage = numberResult.ErrorMessage,
+                    Success = false
+                };
+            }
+
+            if (!numberResult.Result.HasValue)
+            {
+                return new PresentResult
+                {
+                    ErrorMessage = $"Unknown error extracting number from {numeric}",
+                    Success = false
+                };
+            }
+
+            return NumericToRoman(numberResult.Result.Value);
+        }
+
         public PresentResult NumericToRoman(int numeric)
         {
             if (numeric <= 0 || numeric > 2000)

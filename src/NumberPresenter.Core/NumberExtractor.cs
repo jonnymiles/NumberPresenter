@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NumberPresenter.Core
+﻿namespace NumberPresenter.Core
 {
-    public class NumberService : INumberService
+    public static class NumberExtractor
     {
-        public NumberResult ExtractNumber(string input)
+        public static NumberResult ExtractNumber(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
             {

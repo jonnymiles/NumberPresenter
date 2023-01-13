@@ -6,12 +6,10 @@ namespace NumberPresenter.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly INumberService _numberService;
         private readonly IRomanService _romanService;
 
-        public HomeController(INumberService numberService, IRomanService romanService)
+        public HomeController(IRomanService romanService)
         {
-            _numberService = numberService;
             _romanService = romanService;
         }
 
@@ -24,21 +22,7 @@ namespace NumberPresenter.Web.Controllers
         [HttpPost]
         public IActionResult Index(IndexModel model)
         {
-            var numberResult = _numberService.ExtractNumber(model.UserInput);
-
-            if (!numberResult.Success)
-            {
-                model.ErrorMessage = numberResult.ErrorMessage;
-                return View(model);
-            }
-
-            if (!numberResult.Result.HasValue)
-            {
-                model.ErrorMessage = "Unknown error";
-                return View(model);
-            }
-
-            var romanResult = _romanService.NumericToRoman(numberResult.Result.Value);
+            var romanResult = _romanService.NumericToRoman(model.UserInput);
 
             if (!romanResult.Success)
             {

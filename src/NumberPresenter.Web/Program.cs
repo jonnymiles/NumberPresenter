@@ -4,7 +4,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<INumberService, NumberService>();
 builder.Services.AddScoped<IRomanService, RomanService>();
 
 var app = builder.Build();

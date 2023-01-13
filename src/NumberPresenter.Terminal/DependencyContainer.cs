@@ -16,7 +16,6 @@ namespace NumberPresenter.Terminal
         {
             var services = new ServiceCollection();
             services.AddSingleton<IRomanService, RomanService>();
-            services.AddSingleton<INumberService, NumberService>();
             _serviceProvider = services.BuildServiceProvider();
         }
 
