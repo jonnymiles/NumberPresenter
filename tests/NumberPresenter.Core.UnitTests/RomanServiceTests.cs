@@ -27,6 +27,12 @@ namespace NumberPresenter.Core.UnitTests
         [DataRow("2000", "MM")]
         [DataRow("606", "DCVI")]
         [DataRow("1", "I")]
+        [DataRow("5", "V")]
+        [DataRow("10", "X")]
+        [DataRow("50", "L")]
+        [DataRow("100", "C")]
+        [DataRow("500", "D")]
+        [DataRow("1000", "M")]
         public void NumericToRoman_String_Tests(string numeric, string numeral)
         {
             var subject = GetSubject();
