@@ -1,7 +1,7 @@
 ﻿namespace NumberPresenter.Core
 {
     /// <summary>
-    /// Objecting representing the result of an attempted conversion to a number.
+    /// Object representing the result of an attempted conversion to a number.
     /// </summary>
     public class NumberResult : ResultRoot
     {
