@@ -6,7 +6,7 @@ It has been created for a job interview.
 
 A live demo of the web application in this project can be viewed here: (url)
 
-To use the website, simply put your number into the box of the left and press convert:
+To use the website, simply put your number into the box on the left and press convert:
 
 ![Put your number in the left box and press convert](https://github.com/jonnymiles/NumberPresenter/blob/main/screen1.png)
 
