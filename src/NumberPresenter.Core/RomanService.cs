@@ -67,7 +67,7 @@ namespace NumberPresenter.Core
             };
         }
 
-        private string Romanise(int number)
+        private static string Romanise(int number)
         {
             if (RomanNumeralsLookup.IsSubtractionCase(number))
             {
