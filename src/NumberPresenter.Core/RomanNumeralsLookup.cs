@@ -1,5 +1,8 @@
 ﻿namespace NumberPresenter.Core
 {
+    /// <summary>
+    /// Provides lookup methods for referencing Roman numerals.
+    /// </summary>
     public static class RomanNumeralsLookup
     {
         private static readonly IEnumerable<NumberNumeral> _keyNumerals = new List<NumberNumeral>
@@ -23,6 +26,11 @@
             new(900, "CM"),
         };
 
+        /// <summary>
+        /// Takes a number and returns the first Roman numeral below it.
+        /// </summary>
+        /// <param name="input">The number to be checked.</param>
+        /// <returns>The first Roman numeral below the input number.</returns>
         public static NumberNumeral RoundDown(int input)
         {
             if (_keyNumerals.Any(x => x.Number == input))
@@ -33,6 +41,11 @@
             return FindNextDown(input);
         }
 
+        /// <summary>
+        /// Takes a number and returns the second highest Roman numeral that goes into it.
+        /// </summary>
+        /// <param name="input">The number to be checked.</param>
+        /// <returns>The second highest Roman numeral that goes into the number.</returns>
         public static NumberNumeral RoundDownTwice(int input)
         {
             var roundDown = RoundDown(input);
@@ -40,11 +53,21 @@
             return FindNextDown(roundDown.Number);
         }
 
+        /// <summary>
+        /// Checks if the number is a recognised subtraction case.
+        /// </summary>
+        /// <param name="input">The number to be checked.</param>
+        /// <returns>True if the number is a subtraction case, false if not.</returns>
         public static bool IsSubtractionCase(int input)
         {
             return _subtractionCases.Any(x => x.Number == input);
         }
 
+        /// <summary>
+        /// Gets the Roman numeral for a subtraction case.
+        /// </summary>
+        /// <param name="input">The subtraction case number.</param>
+        /// <returns>Roman numeral information for the number.</returns>
         public static NumberNumeral GetSubtractionCase(int input)
         {
             return _subtractionCases.First(x => x.Number == input);

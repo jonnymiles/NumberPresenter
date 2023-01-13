@@ -2,15 +2,17 @@
 
 namespace NumberPresenter.Core
 {
+    /// <inheritdoc/>
     public class RomanService : IRomanService
     {
-        public PresentResult NumericToRoman(string numeric)
+        /// <inheritdoc/>
+        public TextResult NumericToRoman(string numeric)
         {
             var numberResult = NumberExtractor.ExtractNumber(numeric);
 
             if (!numberResult.Success)
             {
-                return new PresentResult
+                return new TextResult
                 {
                     ErrorMessage = numberResult.ErrorMessage,
                     Success = false
@@ -19,7 +21,7 @@ namespace NumberPresenter.Core
 
             if (!numberResult.Result.HasValue)
             {
-                return new PresentResult
+                return new TextResult
                 {
                     ErrorMessage = $"Unknown error extracting number from {numeric}",
                     Success = false
@@ -29,11 +31,12 @@ namespace NumberPresenter.Core
             return NumericToRoman(numberResult.Result.Value);
         }
 
-        public PresentResult NumericToRoman(int numeric)
+        /// <inheritdoc/>
+        public TextResult NumericToRoman(int numeric)
         {
             if (numeric <= 0 || numeric > 2000)
             {
-                return new PresentResult
+                return new TextResult
                 {
                     Success = false,
                     ErrorMessage = "Number must be between 1 and 2000"
@@ -57,7 +60,7 @@ namespace NumberPresenter.Core
                 finalRoman.Append(numeral);
             }
 
-            return new PresentResult
+            return new TextResult
             {
                 Success = true,
                 Result = finalRoman.ToString()

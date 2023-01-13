@@ -1,15 +1,18 @@
 ﻿namespace NumberPresenter.Core
 {
-    public record NumberNumeral
+    /// <summary>
+    /// Record for pairing a base 10 number with its Roman numeral.
+    /// </summary>
+    public record NumberNumeral(int Number, string Numeral)
     {
-        public NumberNumeral(int number, string numeral)
-        {
-            Number = number;
-            Numeral = numeral;
-        }
+        /// <summary>
+        /// Gets or sets the number in base 10 format.
+        /// </summary>
+        public int Number { get; set; } = Number;
 
-        public int Number { get; set; }
-
-        public string Numeral { get; set; }
+        /// <summary>
+        /// Gets or sets the matching Roman numeral for the number.
+        /// </summary>
+        public string Numeral { get; set; } = Numeral;
     }
 }
